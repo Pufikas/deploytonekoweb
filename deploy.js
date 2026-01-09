@@ -1,14 +1,14 @@
 const FormData = require("form-data");
 const path = require("path");
 const fs = require("fs");
-let url = "https://nekoweb.org/api/files/upload";
+const url = "https://nekoweb.org/api/files/upload";
 const form = new FormData();
-let { APIKEY, DOMAIN, USERNAME, DIRECTORY } = process.env;
+const { APIKEY, DOMAIN, USERNAME, DIRECTORY } = process.env;
 
 const srcDir = path.resolve("..", DIRECTORY);
 
 function getAllFiles(dir, files = []) {
-    for (const file of fs.readDirSync(dir)) {
+    for (const file of fs.readdirSync(dir)) {
         const fullPath = path.join(dir, file);
         const stat = fs.statSync(fullPath);
 
