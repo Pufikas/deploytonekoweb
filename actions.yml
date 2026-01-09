@@ -1,0 +1,36 @@
+name: "Deploy To NekoWeb"
+
+inputs:
+  nekoweb-api-key:
+    description: "Your NekoWeb API key."
+    required: true
+  nekoweb-domain:
+    description: "Your NekoWeb domain to deploy to."
+    required: true
+  nekoweb-username:
+    description: "Your NekoWeb username."
+    required: true
+  directory:
+    description: "Which directory to upload?"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Download Deployment Script
+      run: git clone --depth 1 https://github.com/Pufikas/deploytonekoweb.git
+      shell: bash
+
+    - name: Install Dependencies
+      uses: actions/setup-node@v4
+    - run: npm install
+
+    - name: Deploy
+    - run: |
+        cd deploytonekoweb
+        export APIKEY="${{ inputs.nekoweb-api-key }}"
+        export DOMAIN="${{ inputs.nekoweb-domain }}"
+        export USERNAME="${{ inputs.username }}"
+        export DIRECTORY="${{ inputs.directory }}"
+        npm run deploy.js
+      shell: bash
