@@ -1,4 +1,5 @@
 const FormData = require("form-data");
+const path = require("path");
 let url = "https://nekoweb.org/api/files/upload";
 const form = new FormData();
 let { APIKEY, DOMAIN, USERNAME, DIRECTORY } = process.env;
