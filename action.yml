@@ -1,4 +1,4 @@
-name: "Deploy To NekoWeb"
+name: "Zip and Upload to NekoWeb"
 
 inputs:
   nekoweb-api-key:
