@@ -1,4 +1,5 @@
-name: "Deploy To NekoWeb"
+name: "Zip and Upload to NekoWeb"
+description: "Zip your website github repository and upload to NekoWeb" 
 
 inputs:
   nekoweb-api-key:
